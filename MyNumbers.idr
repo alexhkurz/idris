@@ -15,6 +15,6 @@ add_zero O = Refl
 add_zero (S n) = rewrite add_zero n in Refl
 
 comm_add : (m : N) -> (n : N) -> add m n = add n m
-comm_add O n = rewrite add_zero n in sym $ add_zero n
+comm_add O n = rewrite add_zero n in rewrite sym $ add_zero (add n O) in Refl
 comm_add (S m) n = rewrite comm_add m n in rewrite add (S m) n in rewrite add n (S m) in
                    rewrite comm_add n (S m) in Refl
